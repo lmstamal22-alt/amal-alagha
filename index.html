@@ -1,0 +1,762 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="رحلة تفاعلية لتعلّم الإنجليزية للصف الثالث في حديقة الحيوانات.">
+<title>The Great Zoo Adventure | مغامرة حديقة الحيوانات</title>
+<style>
+:root{font-family:"Readex Pro",Arial,sans-serif;color:#1b362d;background:#f7f4e9;font-size:16px;--green:#184e3d;--line:#dedfd0;--cream:#fffdf5}
+*{box-sizing:border-box}
+body{margin:0}
+button,a{font:inherit}
+button{cursor:pointer}
+a{color:inherit;text-decoration:none}
+button:focus-visible,a:focus-visible{outline:3px solid #ac601b;outline-offset:3px}
+[hidden]{display:none!important}
+.skip{position:absolute;inset-inline-start:1rem;top:-10rem;background:white;padding:12px;z-index:2}
+.skip:focus{top:1rem}
+header{background:#123e31;color:#fff8e6;border-bottom:4px solid #e9b752}
+.bar{max-width:1420px;margin:auto;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand,.tools{display:flex;align-items:center;gap:12px}
+.brand{font-weight:700}
+.logo{background:#f2c365;border-radius:12px;padding:8px;font-size:1.4rem}
+small{display:block;font:700 .72rem "DM Sans",sans-serif;letter-spacing:.12em;margin-top:4px;color:#e4d3a3}
+.stars{border-radius:99px;background:#f1c66a;color:#2c3c28;padding:7px 13px;font-weight:700;white-space:nowrap}
+.tools button{background:transparent;color:inherit;border:1px solid #91aa99;border-radius:8px;padding:6px 9px}
+.layout{max-width:1420px;margin:auto;display:grid;grid-template-columns:245px minmax(0,1fr);gap:30px;padding:30px 32px}
+aside{align-self:start;position:sticky;top:20px}
+aside h2{font-size:.98rem;margin:0 0 12px}
+nav a{display:flex;align-items:center;gap:10px;padding:11px 9px;border-radius:9px;font-size:.86rem;margin:2px 0}
+nav a[aria-current="page"],nav a:hover{background:#dfebd8;font-weight:700}
+nav a span{background:var(--cream);border:1px solid var(--line);border-radius:8px;display:grid;place-items:center;width:32px;height:29px;flex:none}
+.passport{margin-top:20px;padding:16px;background:var(--cream);border:1px solid var(--line);border-radius:14px}
+progress{width:100%;accent-color:var(--green)}
+.passport p{font-size:.8rem;margin:7px 0 0}
+.hero{background:#164b3a;color:#fff7dd;border-radius:23px;overflow:hidden;display:grid;grid-template-columns:1fr 1.14fr;align-items:stretch;min-height:345px}
+.hero-copy{padding:34px 30px}
+.eyebrow{margin:0;color:#f0c771;font-size:.82rem;font-weight:700}
+h1{font-family:"DM Sans",Arial,sans-serif;line-height:1.02;margin:15px 0;font-size:clamp(2.3rem,4.5vw,4.8rem);letter-spacing:-.065em}
+.hero h1{text-align:right}
+.hero p:not(.eyebrow){line-height:1.8;margin-bottom:24px}
+.hero img{width:100%;height:100%;object-fit:cover;object-position:center}
+.primary,.secondary{display:inline-flex;justify-content:center;align-items:center;gap:12px;padding:10px 15px;border-radius:9px;font-weight:700;border:1px solid transparent}
+.primary{background:#f0c66f;color:#24372b}
+.secondary{background:var(--cream);border-color:var(--line)}
+.primary:hover{background:#ffdc8d}
+.section-title{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-top:24px}
+.section-title span{font:600 .88rem "DM Sans",sans-serif;color:#486457}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.card{display:block;padding:17px;background:var(--cream);border:1px solid var(--line);border-radius:13px}
+.card:hover{background:#e8efdd;border-color:#94af98}
+.card span{display:block;font-size:1.48rem}
+.card strong{display:block;margin:9px 0 3px}
+.card small{color:#4a6457;letter-spacing:0;font-size:.85rem}
+.lesson-head{padding:24px 26px;background:var(--green);color:#fff7dd;border-radius:15px;margin-bottom:15px}
+.lesson-head h1{font:700 2rem "Readex Pro",sans-serif;letter-spacing:0}
+.lesson-head p:last-child{text-align:right;margin:0}
+.lesson-shell{border:1px solid var(--line);border-radius:15px;background:white;overflow:hidden}
+iframe{display:block;border:0;width:100%;height:clamp(530px,77vh,960px)}
+.lesson-actions{display:flex;justify-content:space-between;gap:8px;margin-top:15px}
+footer{border-top:1px solid var(--line);margin-top:28px;padding:13px 0;color:#405b4e;font-size:.8rem}
+footer button{border:0;color:var(--green);background:none;text-decoration:underline;padding:4px 8px}
+@media(max-width:1000px){.layout{grid-template-columns:190px minmax(0,1fr);gap:18px;padding:20px}.hero{grid-template-columns:1fr}.hero img{max-height:300px}.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:660px){.layout{display:block;padding:14px}.bar{padding:12px}.brand{font-size:.82rem}.brand small{font-size:.58rem}.tools{gap:5px;font-size:.72rem}aside{position:static;margin-bottom:16px}aside nav h2{margin-bottom:2px}#stations{display:flex;gap:5px;overflow:auto;white-space:nowrap}nav a{padding:6px}.passport{margin-top:6px;padding:8px 11px;display:grid;grid-template-columns:1fr 1fr;gap:5px}.passport h2{margin:0}.passport p{margin:0}.hero-copy{padding:25px 18px}.section-title{display:block;margin-bottom:12px}.lesson-actions{font-size:.77rem}.lesson-actions a,.lesson-actions button{padding:7px 8px}}
+@media(prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+.welcome{color:#184e3d;margin-top:6px}
+.tools{flex-wrap:wrap;justify-content:end}
+.portals{margin:24px 0 30px}
+.portals .cards{grid-template-columns:repeat(4,minmax(0,1fr))}
+button.card{text-align:start;color:inherit}
+.portals strong{line-height:1.55}
+dialog{width:min(650px,calc(100% - 28px));max-height:90vh;border:1px solid #b5c7ae;border-radius:18px;background:var(--cream);color:#1b362d;padding:0}
+dialog::backdrop{background:#102d25b8}
+.modal-head{display:flex;align-items:start;justify-content:space-between;gap:15px;padding:15px 20px;background:var(--green);color:#fff7dd}
+.modal-head h2{margin:6px 0 0;font-size:1.4rem}
+.modal-head button{color:#1b362d;font-size:1.1rem}
+.dialogue-scene{width:100%;height:170px;object-fit:cover;display:block}
+.dialogue-body,.guide-body{padding:12px 20px 20px}
+.guide-body{line-height:1.85}
+#speaker{font-weight:700;color:#366450}
+#speech{font:700 1.46rem/1.4 "DM Sans",Arial,sans-serif}
+audio{max-width:100%;display:block}
+.reply-options,.modal-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.modal-actions{justify-content:space-between;align-items:center}
+.reply-options button[data-selected="true"]{border:2px solid #346749}
+#dialogue-feedback{min-height:1em}
+.word-cards{padding:16px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.word-cards button{width:100%;text-align:center}
+.word-cards img{display:block;width:100%;aspect-ratio:4/3;object-fit:contain}
+.word-cards strong{font-family:"DM Sans",Arial,sans-serif}
+.infographic{width:100%;display:block;object-fit:contain;max-height:65vh}
+.modal-link{margin:12px 20px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+@media(max-width:850px){.portals .cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:500px){.bar{flex-wrap:wrap}.tools{justify-content:start}.word-cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.credits{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:12px;padding-bottom:9px;border-bottom:1px solid #afc5a458;color:#f6e7c7;font-size:.83rem;line-height:1.7}
+.credits strong{color:#fff7dd}
+.hero img{object-position:72% center}
+.dialogue-scene{height:clamp(155px,31vw,245px);object-position:center 46%}
+:root{background:#f7f3e6;--cream:#fffdf5;--green:#174735;--line:#dedecf;--muted:#516659}
+body{background:radial-gradient(ellipse at 8% 1%,#e7ecda 0,transparent 34rem),#f7f3e6}
+.bar{padding-block:13px}
+.layout{grid-template-columns:222px minmax(0,1fr);gap:23px;max-width:1360px}
+aside nav{background:#fffdf5;border:1px solid var(--line);padding:15px 12px;border-radius:17px}
+aside nav h2{padding-inline:8px}
+.hero{display:block;position:relative;min-height:0;background:#123d2f;border-radius:24px;box-shadow:0 14px 28px #25453024;isolation:isolate}
+.cover-art{margin:0;aspect-ratio:2.05;overflow:hidden}
+.cover-art img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 47%}
+.hero-copy{padding:20px 26px 23px}
+.hero .eyebrow{margin-bottom:7px}
+.hero h1{font-size:clamp(1.9rem,4.6vw,3.95rem);line-height:1.03;margin:0}
+.hero p:not(.eyebrow){margin:10px 0 14px}
+.portals{margin:22px 0 24px}
+.portals .card{background:#e9edd9;border-color:#d7dfc7}
+.portals .card:nth-child(2){background:#f9e9c3;border-color:#eddeb4}
+.portals .card:nth-child(3){background:#e1ece6;border-color:#d2e2da}
+.portals .card:nth-child(4){background:#f8e6d8;border-color:#eddacd}
+.portals .card:hover,.lesson-card:hover{border-color:#789781}
+.lesson-card{overflow:hidden;padding:0}
+.lesson-card img{width:100%;display:block;aspect-ratio:1.75;object-fit:cover;background:#eaf1dd}
+.lesson-card span,.lesson-card strong,.lesson-card small,.lesson-card em{margin-inline:14px}
+.lesson-card strong{margin-top:11px}
+.lesson-card small{margin-bottom:9px}
+.lesson-card em{display:block;color:var(--muted);font-size:.8rem;font-style:normal;line-height:1.6;margin-bottom:13px}
+.lesson-head #lesson-note{margin-top:8px;line-height:1.7}
+.editor-form{padding:14px 20px 16px}
+.editor-form>p{line-height:1.7}
+.editor-form fieldset{border:1px solid var(--line);border-radius:12px;margin:0 0 12px;padding:10px 13px 13px}
+.editor-form label{display:grid;gap:4px;margin-bottom:8px;font-size:.85rem;font-weight:600}
+.editor-form :is(input:not([type=file]),textarea,select){width:100%;font:inherit;background:white;border:1px solid #a7b6a6;border-radius:8px;padding:7px;color:inherit}
+.editor-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.editor-form .import-label{cursor:pointer;display:inline-flex;margin:0}
+#import-settings:focus-visible + *{outline:2px solid var(--green)}
+#editor-status{color:var(--green);margin-bottom:0}
+@media(max-width:1000px){.layout{grid-template-columns:175px minmax(0,1fr)}.hero img{max-height:none}}
+@media(max-width:660px){.layout{display:block}.cover-art{aspect-ratio:1.52}.hero-copy{padding:15px 18px}.editor-row{grid-template-columns:1fr}}
+.lesson-card small{text-align:right}
+.editor-form label.import-label:has(input:focus-visible){outline:3px solid #ac601b}
+
+</style>
+</head>
+<body>
+<a class="skip" href="#main"><span data-zoo-text>انتقل إلى المحتوى</span></a>
+<header><div class="bar"><a href="#home" class="brand"><span class="logo" aria-hidden="true">🐾</span><span><span data-zoo-text>مغامرة حديقة الحيوانات</span><small>THE GREAT ZOO ADVENTURE</small></span></a><div class="tools"><button type="button" id="language" class="language-switch" lang="en" dir="ltr" aria-label="Switch to English">English</button><button data-dialog="editor" type="button"><span data-zoo-text>✎ تعديل الموقع</span></button><button data-dialog="dialogue" type="button"><span data-zoo-text>🎬 حوار تفاعلي</span></button><button data-dialog="infographic" type="button"><span data-zoo-text>🗺️ الإنفوجرافيك</span></button><button data-dialog="guide" type="button"><span data-zoo-text>دليل المعلّم</span></button><span class="stars" id="stars">★ ٠ / ٦</span><button id="font" type="button" aria-pressed="false"><span data-zoo-text>تكبير الخط</span></button></div></div></header>
+<div class="layout">
+<aside><nav aria-label="خريطة الرحلة" data-zoo-aria-label="خريطة الرحلة"><h2><span data-zoo-text>خريطة رحلتك</span></h2><div id="stations"></div></nav><section class="passport"><h2><span data-zoo-text>جواز المستكشف</span></h2><progress id="progress" max="6" value="0" aria-label="الحصص المكتملة" data-zoo-aria-label="الحصص المكتملة"></progress><p id="progress-text" aria-live="polite"></p></section></aside>
+<main id="main">
+<section id="home" class="home">
+<div class="hero"><figure class="cover-art"><img id="main-cover" data-offline-media="media/images/zoo-cover-credits.png" alt="زكي مع حيوانات الحديقة. إعداد أمل محمد الاغا، إشراف الدكتور مجدي عقل" fetchpriority="high"></figure><div class="hero-copy"><p class="eyebrow"><span data-zoo-text>الصف الثالث · الوحدة الرابعة</span></p><div class="credits" id="editable-credits" hidden><span><span data-zoo-text>إعداد الطالبة</span> <strong id="author-credit">أمل محمد الاغا</strong></span><span><span data-zoo-text>إشراف</span> <strong id="supervisor-credit">الدكتور مجدي عقل</strong></span></div><h1 id="cover-title" lang="en" dir="auto">The Great Zoo Adventure</h1><p id="cover-intro">استكشف حديقة الحيوانات مع زكي. استمع إلى الكلمات، العب، وجرّب التحدّي الأخير!</p><a class="primary" href="#lesson-0"><span data-zoo-text>ابدأ المغامرة</span> <span aria-hidden="true">←</span></a> <button class="secondary welcome" id="welcome" type="button"><span data-zoo-text>🔊 استمع</span></button></div></div>
+<section class="portals"><h2><span data-zoo-text>اختَر بوابة الاستكشاف</span></h2><div class="cards">
+<button class="card" data-dialog="words" type="button"><span>🎒</span><strong><span data-zoo-text>اكتشف الكلمات واسمع نطقها</span></strong></button>
+<a class="card" href="#lesson-3"><span>🧩</span><strong><span data-zoo-text>العب وطابِق الألوان</span></strong></a>
+<button class="card" data-dialog="dialogue" type="button"><span>🎬</span><strong><span data-zoo-text>شارك في حوار الحديقة</span></strong></button>
+<a class="card" href="#lesson-5"><span>🎧</span><strong><span data-zoo-text>استمع وجرّب الإجابة</span></strong></a>
+</div></section>
+<div class="section-title"><h2><span data-zoo-text>اختَر محطة</span></h2><span>English for Palestine · At the Zoo</span></div><div class="cards" id="cards"></div>
+</section>
+<section id="activity" hidden>
+<div class="lesson-head"><p class="eyebrow" id="lesson-label"></p><h1 id="lesson-title" tabindex="-1"></h1><p id="lesson-description" lang="en" dir="ltr"></p><p id="lesson-note" dir="auto" hidden></p></div>
+<div class="lesson-shell"><iframe id="lesson-frame" title="أنشطة المحطة باللغة الإنجليزية" data-zoo-title="أنشطة المحطة باللغة الإنجليزية" allow="microphone"></iframe></div>
+<div class="lesson-actions"><a class="secondary" id="previous" href="#home"><span data-zoo-text>السابق</span></a><button class="primary" id="complete" type="button"><span data-zoo-text>أنهيت هذه الحصة ✓</span></button><a class="secondary" id="next" href="#home"><span data-zoo-text>التالي</span></a></div>
+</section>
+<footer><span data-zoo-text>يُحفظ تقدّمك على هذا الجهاز.</span> <button type="button" id="reset"><span data-zoo-text>بدء رحلة جديدة</span></button></footer>
+</main></div><dialog id="dialogue" aria-labelledby="dialogue-title">
+<div class="modal-head"><div><p class="eyebrow"><span data-zoo-text>استمع وشارك</span></p><h2 id="dialogue-title"><span data-zoo-text>حوار عند بوابة الحديقة</span></h2></div><form method="dialog"><button class="secondary" aria-label="إغلاق" data-zoo-aria-label="إغلاق">×</button></form></div>
+<img class="dialogue-scene" data-offline-media="media/images/zoo-dialogue-new.png" alt="ليان ونور تتحاوران عند بوابة حديقة الحيوانات" data-zoo-alt="ليان ونور تتحاوران عند بوابة حديقة الحيوانات">
+<div class="dialogue-body">
+<p id="speaker"></p><p id="speech" lang="en" dir="ltr" aria-live="polite"></p>
+<audio id="dialogue-audio" controls preload="none" aria-label="استمع إلى جملة الحوار" data-zoo-aria-label="استمع إلى جملة الحوار"></audio>
+<div id="reply-options" class="reply-options" lang="en" dir="ltr"></div><p id="dialogue-feedback" aria-live="polite"></p>
+<div class="modal-actions"><button class="secondary" id="dialogue-back" type="button"><span data-zoo-text>السابق</span></button><span id="dialogue-count"></span><button class="primary" id="dialogue-next" type="button"><span data-zoo-text>التالي</span></button></div>
+</div></dialog>
+<dialog id="words" aria-labelledby="words-title">
+<div class="modal-head"><div><p class="eyebrow">Listen and repeat</p><h2 id="words-title"><span data-zoo-text>حقيبة الكلمات</span></h2></div><form method="dialog"><button class="secondary" aria-label="إغلاق" data-zoo-aria-label="إغلاق">×</button></form></div>
+<div id="word-cards" class="word-cards"></div><div id="word-status" class="sr-only" aria-live="polite"></div>
+</dialog>
+<dialog id="infographic" aria-labelledby="infographic-title">
+<div class="modal-head"><div><p class="eyebrow">The Great Zoo Adventure</p><h2 id="infographic-title"><span data-zoo-text>رحلتنا في صورة</span></h2></div><form method="dialog"><button class="secondary" aria-label="إغلاق" data-zoo-aria-label="إغلاق">×</button></form></div>
+<img class="infographic" data-offline-media="media/images/unit_map.png" alt="خريطة مصوّرة لحصص الوحدة الست" data-zoo-alt="خريطة مصوّرة لحصص الوحدة الست"><a class="secondary modal-link" data-offline-download="media/images/unit_map.png" download="Zoo-Map.png"><span data-zoo-text>تنزيل الخريطة</span></a>
+</dialog>
+<dialog id="guide" aria-labelledby="guide-title">
+<div class="modal-head"><div><p class="eyebrow">English for Palestine · Grade 3</p><h2 id="guide-title"><span data-zoo-text>دليل المعلّم</span></h2></div><form method="dialog"><button class="secondary" aria-label="إغلاق" data-zoo-aria-label="إغلاق">×</button></form></div>
+<div class="guide-body"><p><span data-zoo-text>تعتمد الوحدة على ست حصص قصيرة. افتح كل حصة من خريطة الرحلة، ثم تنقّل بين صفحاتها من داخل النشاط.</span></p><ol><li><span data-zoo-text>تقديم أسماء الحيوانات بالصور والنطق، ثم التمرّن على وصف حيوان.</span></li><li><span data-zoo-text>تمييز الكبير والصغير والعدّ باستخدام صور الحيوانات.</span></li><li><span data-zoo-text>مراجعة الألوان والأعداد بلعب المطابقة والاستماع.</span></li><li><span data-zoo-text>قراءة كلمات الوحدة وإكمال الحروف والجمل.</span></li><li><span data-zoo-text>استخدام كلمات السرعة ووصف حركة الحيوانات.</span></li><li><span data-zoo-text>مراجعة الجمل وحل التحدّي النهائي، ثم الانتقال إلى صفحة الشهادة.</span></li></ol><p><span data-zoo-text>يمكن للطلاب إعادة تشغيل الصوت والمحاولة ثانية. يسجّل جواز المستكشف اكتمال الحصة عندما يضغط الطالب «أنهيت هذه الحصة».</span></p></div>
+</dialog>
+<dialog id="editor" aria-labelledby="editor-title">
+<div class="modal-head"><div><h2 id="editor-title"><span data-zoo-text>تعديل الموقع</span></h2></div><form method="dialog"><button class="secondary" aria-label="إغلاق" data-zoo-aria-label="إغلاق">×</button></form></div>
+<form id="editor-form" class="editor-form">
+<p><span data-zoo-text>احفظي تعديلاتك على هذا الجهاز، أو نزّلي الإعدادات لنقلها إلى جهاز آخر.</span></p>
+<fieldset><legend><span data-zoo-text>الغلاف</span></legend>
+<label><span data-zoo-text>عنوان المشروع</span><input id="edit-title" required maxlength="95" dir="auto"></label>
+<label><span data-zoo-text>النص الترحيبي</span><textarea id="edit-intro" required maxlength="350" rows="2" dir="auto"></textarea></label><label><span data-zoo-text>النص الترحيبي بالإنجليزية</span><textarea id="edit-introEn" required maxlength="350" rows="2" dir="ltr"></textarea></label>
+<div class="editor-row"><label><span data-zoo-text>إعداد الطالبة</span><input id="edit-author" required maxlength="65"></label><label><span data-zoo-text>إشراف</span><input id="edit-supervisor" required maxlength="75"></label></div>
+<label><span data-zoo-text>صورة الغلاف</span><select id="edit-cover"><option value="cover" data-zoo-text>غلاف زكي والأسماء</option><option value="gate" data-zoo-text>بوابة الحديقة</option><option value="dialogue" data-zoo-text>ليان ونور في الحديقة</option></select></label>
+</fieldset>
+<fieldset><legend><span data-zoo-text>الحصص</span></legend>
+<label><span data-zoo-text>اختاري الحصة</span><select id="edit-station"></select></label>
+<div class="editor-row"><label><span data-zoo-text>اسم الحصة بالعربية</span><input id="edit-arabic" required maxlength="70"></label><label><span data-zoo-text>اسم الحصة بالإنجليزية</span><input id="edit-english" required maxlength="90" dir="ltr"></label></div>
+<label><span data-zoo-text>وصف أو تعليمات للطالب</span><textarea id="edit-note" rows="2" maxlength="350" dir="auto"></textarea></label><label><span data-zoo-text>التعليمات بالإنجليزية</span><textarea id="edit-noteEn" rows="2" maxlength="350" dir="ltr"></textarea></label>
+<label><span data-zoo-text>صورة البطاقة</span><select id="edit-picture"></select></label>
+</fieldset>
+<div class="modal-actions"><button type="submit" class="primary"><span data-zoo-text>حفظ التعديلات</span></button><button id="export-settings" class="secondary" type="button"><span data-zoo-text>تنزيل الإعدادات</span></button><label class="secondary import-label" for="import-settings"><span data-zoo-text>استيراد إعدادات</span></label><input id="import-settings" class="sr-only" aria-label="استيراد إعدادات الموقع" data-zoo-aria-label="استيراد إعدادات الموقع" type="file" accept=".json,application/json"></div>
+<p id="editor-status" role="status"></p>
+</form>
+</dialog>
+<script src="zoo-assets-1.js"></script>
+<script src="zoo-assets-2.js"></script>
+<script src="zoo-assets-3.js"></script>
+<script src="zoo-assets-4.js"></script>
+
+<script>
+
+const packed = window.zooAssets;
+const offlineUrls = new Map();
+function offlineBytes(data) {
+  return Uint8Array.from(atob(data), c => c.charCodeAt(0));
+}
+function offlineMediaUrl(path) {
+  if (!offlineUrls.has(path)) {
+    const [type, data] = packed.media[path];
+    offlineUrls.set(path, URL.createObjectURL(new Blob([offlineBytes(data)], {type})));
+  }
+  return offlineUrls.get(path);
+}
+for (const element of document.querySelectorAll("[data-offline-media]")) {
+  element.src = offlineMediaUrl(element.dataset.offlineMedia);
+}
+for (const element of document.querySelectorAll("[data-offline-download]")) {
+  element.href = offlineMediaUrl(element.dataset.offlineDownload);
+}
+const languageDir = () => language === "ar" ? "rtl" : "ltr";
+let offlineStationRequest = 0;
+function clearOfflineStation() {
+  offlineStationRequest++;
+  document.getElementById("lesson-frame").removeAttribute("srcdoc");
+}
+async function loadOfflineStation(index) {
+  const request = ++offlineStationRequest;
+  const frame = document.getElementById("lesson-frame");
+  frame.srcdoc = '<!doctype html><meta charset="utf-8"><p dir="' + languageDir() + '">' + t("جارٍ فتح الحصة…") + '</p>';
+  try {
+    const blob = new Blob([offlineBytes(packed.stations[index])]);
+    const stream = blob.stream().pipeThrough(new DecompressionStream("gzip"));
+    const html = await new Response(stream).text();
+    if (request !== offlineStationRequest) return;
+    frame.srcdoc = html.replace(/media\/(?:images|audios)\/[^"\\\s<>]+?\.(?:png|mp3|wav)/g, offlineMediaUrl);
+  } catch {
+    if (request !== offlineStationRequest) return;
+    frame.srcdoc = '<!doctype html><meta charset="utf-8"><p dir="' + languageDir() + '">' + t("تعذّر فتح الحصة. افتح الملف في إصدار حديث من Chrome أو Edge.") + '</p>';
+  }
+}
+const translations = {
+  "انتقل إلى المحتوى": "Skip to content",
+  "مغامرة حديقة الحيوانات": "The Great Zoo Adventure",
+  "✎ تعديل الموقع": "✎ Edit site",
+  "🎬 حوار تفاعلي": "🎬 Interactive dialogue",
+  "🗺️ الإنفوجرافيك": "🗺️ Journey map",
+  "دليل المعلّم": "Teacher's guide",
+  "تكبير الخط": "Larger text",
+  "خريطة رحلتك": "Your journey",
+  "جواز المستكشف": "Explorer passport",
+  "الصف الثالث · الوحدة الرابعة": "Grade 3 · Unit 4",
+  "إعداد الطالبة": "Created by",
+  "إشراف": "Supervised by",
+  "ابدأ المغامرة": "Start the adventure",
+  "🔊 استمع": "🔊 Listen",
+  "اختَر بوابة الاستكشاف": "Choose what to explore",
+  "اكتشف الكلمات واسمع نطقها": "Explore words and hear them",
+  "العب وطابِق الألوان": "Play and match colours",
+  "شارك في حوار الحديقة": "Join the zoo dialogue",
+  "استمع وجرّب الإجابة": "Listen and choose an answer",
+  "اختَر محطة": "Choose a lesson",
+  "السابق": "Back",
+  "التالي": "Next",
+  "أنهيت هذه الحصة ✓": "I finished this lesson ✓",
+  "يُحفظ تقدّمك على هذا الجهاز.": "Your progress is saved on this device.",
+  "بدء رحلة جديدة": "Start a new journey",
+  "استمع وشارك": "Listen and join in",
+  "حوار عند بوابة الحديقة": "At the zoo gate",
+  "حقيبة الكلمات": "Word explorer",
+  "رحلتنا في صورة": "Our journey at a glance",
+  "تنزيل الخريطة": "Download the map",
+  "تعتمد الوحدة على ست حصص قصيرة. افتح كل حصة من خريطة الرحلة، ثم تنقّل بين صفحاتها من داخل النشاط.": "The unit has six short lessons. Open each lesson from the journey map, then use the controls inside the activity to move between pages.",
+  "تقديم أسماء الحيوانات بالصور والنطق، ثم التمرّن على وصف حيوان.": "Introduce animal names with pictures and pronunciation, then practise describing an animal.",
+  "تمييز الكبير والصغير والعدّ باستخدام صور الحيوانات.": "Tell big and small animals apart and practise counting with pictures.",
+  "مراجعة الألوان والأعداد بلعب المطابقة والاستماع.": "Review colours and numbers through matching and listening.",
+  "قراءة كلمات الوحدة وإكمال الحروف والجمل.": "Read the unit words and complete letters and sentences.",
+  "استخدام كلمات السرعة ووصف حركة الحيوانات.": "Use speed words to describe how animals move.",
+  "مراجعة الجمل وحل التحدّي النهائي، ثم الانتقال إلى صفحة الشهادة.": "Review sentences, take the final challenge, and open the certificate page.",
+  "يمكن للطلاب إعادة تشغيل الصوت والمحاولة ثانية. يسجّل جواز المستكشف اكتمال الحصة عندما يضغط الطالب «أنهيت هذه الحصة».": "Students can replay audio and try again. The explorer passport records a lesson when the student selects “I finished this lesson”.",
+  "تعديل الموقع": "Edit site",
+  "احفظي تعديلاتك على هذا الجهاز، أو نزّلي الإعدادات لنقلها إلى جهاز آخر.": "Save changes on this device, or download your settings to transfer them to another device.",
+  "الغلاف": "Cover",
+  "عنوان المشروع": "Project title",
+  "النص الترحيبي": "Welcome text in Arabic",
+  "Welcome text in English": "Welcome text in English",
+  "صورة الغلاف": "Cover image",
+  "غلاف زكي والأسماء": "Zaki and the credits",
+  "بوابة الحديقة": "Zoo gate",
+  "ليان ونور في الحديقة": "Layan and Nour at the zoo",
+  "الحصص": "Lessons",
+  "اختاري الحصة": "Choose a lesson",
+  "اسم الحصة بالعربية": "Arabic lesson title",
+  "اسم الحصة بالإنجليزية": "English lesson title",
+  "وصف أو تعليمات للطالب": "Instructions in Arabic",
+  "Instructions in English": "Instructions in English",
+  "صورة البطاقة": "Card image",
+  "حفظ التعديلات": "Save changes",
+  "تنزيل الإعدادات": "Download settings",
+  "استيراد إعدادات": "Import settings",
+  "النص الترحيبي بالإنجليزية": "Welcome text in English",
+  "التعليمات بالإنجليزية": "Instructions in English",
+  "خريطة الرحلة": "Journey map",
+  "الحصص المكتملة": "Completed lessons",
+  "إغلاق": "Close",
+  "أنشطة المحطة باللغة الإنجليزية": "Lesson activities in English",
+  "ليان ونور تتحاوران عند بوابة حديقة الحيوانات": "Layan and Nour talk at the zoo gate",
+  "خريطة مصوّرة لحصص الوحدة الست": "Illustrated map of the six lessons",
+  "استمع إلى جملة الحوار": "Listen to the dialogue line",
+  "استيراد إعدادات الموقع": "Import site settings",
+  "الحصة مكتملة ✓": "Lesson complete ✓",
+  "العودة للرئيسية": "Back to home",
+  "مقدمة الرحلة": "Journey introduction",
+  "هل تريد مسح تقدّمك والبدء من جديد؟": "Clear your progress and start again?",
+  "ليان": "Layan",
+  "نور": "Nour",
+  "دورك": "Your turn",
+  "إنهاء الحوار": "Finish dialogue",
+  "جرّب مرة ثانية.": "Try again.",
+  "إجابة صحيحة! استمع إلى الجملة وكرّرها.": "Correct! Listen to the sentence and repeat it.",
+  "🔊 أعد المحاولة": "🔊 Try again",
+  "تعذّر تشغيل التسجيل": "Could not play the recording",
+  "الحيوانات": "Animals",
+  "الأحجام": "Sizes",
+  "الألوان": "Colours",
+  "كلمات الحديقة": "Zoo vocabulary",
+  "سباق الحيوانات": "Animal race",
+  "نهاية الرحلة": "End of the journey",
+  "تم حفظ تعديلاتك على هذا الجهاز.": "Your changes were saved on this device.",
+  "ظهرت تعديلاتك في هذه الجلسة. نزّلي الإعدادات لتحتفظي بها.": "Your changes are active for this session. Download your settings to keep them.",
+  "تم تحميل الإعدادات. اضغطي حفظ التعديلات لتطبيقها.": "Settings loaded. Select Save changes to apply them.",
+  "تعذّر قراءة الملف. اختاري ملف إعدادات من هذا الموقع.": "Could not read that file. Choose a settings file exported from this site.",
+  "جارٍ فتح الحصة…": "Opening the lesson…",
+  "تعذّر فتح الحصة. افتح الملف في إصدار حديث من Chrome أو Edge.": "Could not open this lesson. Open the file in an up-to-date version of Chrome or Edge."
+};
+let language = "ar";
+try { if (localStorage.getItem("great-zoo-language") === "en") language = "en"; } catch {}
+const t = arabic => language === "en" ? translations[arabic] || arabic : arabic;
+const localizedNodes = Array.from(document.querySelectorAll("[data-zoo-text]"), node => [node, node.textContent]);
+function localizeStatic() {
+  document.documentElement.lang = language;
+  document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+  for (const [node, arabic] of localizedNodes) node.textContent = t(arabic);
+  for (const attribute of ["aria-label", "alt", "title"]) {
+    for (const node of document.querySelectorAll("[data-zoo-" + attribute + "]")) {
+      node.setAttribute(attribute,t(node.getAttribute("data-zoo-" + attribute)));
+    }
+  }
+  const button = document.getElementById("language");
+  button.lang = language === "ar" ? "en" : "ar";
+  button.textContent = language === "ar" ? "English" : "العربية";
+  button.setAttribute("aria-label",language === "ar" ? "Switch to English" : "التحويل إلى العربية");
+}
+const lessons = [
+  ["🐾", "بوابة المغامرة", "The Magic Zoo Gate"],
+  ["🦁", "تعرّف إلى الحيوانات", "Meet My Animal Friends"],
+  ["🐘", "كبير أم صغير؟", "Big, Small, Very Big"],
+  ["🌈", "الألوان والأعداد", "Colours and Numbers"],
+  ["✏️", "القراءة والكتابة", "Read and Colour"],
+  ["🐆", "سريع أم بطيء؟", "Fast and Slow"],
+  ["🏆", "التحدّي والشهادة", "The Final Zoo Mission"]
+];
+
+const $ = id => document.getElementById(id);
+const key = "great-zoo-unit4-progress-v1";
+let completed = new Set();
+try {
+  const saved = JSON.parse(localStorage.getItem(key) || "[]");
+  completed = new Set(saved.filter(i => Number.isInteger(i) && i >= 1 && i <= 6));
+} catch {}
+let current = null;
+const number = n => new Intl.NumberFormat(language).format(n);
+const href = i => i === null ? "#home" : "#lesson-" + i;
+
+function linkFor([icon, title, english], i, card) {
+  const link = document.createElement("a");
+  link.href = href(i);
+  link.className = card ? "card" : "";
+  if (!card) link.dataset.station = i;
+  const mark = document.createElement("span");
+  mark.textContent = icon;
+  mark.setAttribute("aria-hidden", "true");
+  link.append(mark);
+  if (card) {
+    const name = document.createElement("strong");
+    const subtitle = document.createElement("small");
+    name.textContent = title;
+    subtitle.textContent = english;
+    subtitle.lang = "en";
+    subtitle.dir = "ltr";
+    link.append(name, subtitle);
+  } else {
+    link.append(title);
+  }
+  return link;
+}
+
+$("stations").append(...lessons.map((lesson, i) => linkFor(lesson, i, false)));
+$("cards").append(...lessons.slice(1).map((lesson, i) => linkFor(lesson, i + 1, true)));
+
+function refreshProgress() {
+  const count = completed.size;
+  $("stars").textContent = "★ " + number(count) + " / " + number(6);
+  $("progress").value = count;
+  $("progress-text").textContent = language === "ar" ? number(count) + " من ٦ حصص مكتملة" : count + " of 6 lessons complete";
+  const done = completed.has(current);
+  $("complete").textContent = done ? t("الحصة مكتملة ✓") : t("أنهيت هذه الحصة ✓");
+  $("complete").disabled = done;
+  for (const item of $("stations").children) {
+    const i = Number(item.dataset.station);
+    if (i === current) item.setAttribute("aria-current", "page");
+    else item.removeAttribute("aria-current");
+    item.firstElementChild.textContent = completed.has(i) ? "✓" : lessons[i][0];
+  }
+}
+
+function render(focus) {
+  const match = location.hash.match(/^#lesson-([0-6])$/);
+  current = match ? Number(match[1]) : null;
+  $("home").hidden = current !== null;
+  $("activity").hidden = current === null;
+  if (current !== null) {
+    const [, title, english] = lessons[current];
+    $("lesson-label").textContent = current ? "الحصة " + number(current) + " من ٦" : t("مقدمة الرحلة");
+    $("lesson-title").textContent = title;
+    $("lesson-description").textContent = english;
+    loadOfflineStation(current);
+    $("lesson-frame").title = english + " — interactive activities";
+    $("previous").href = href(current ? current - 1 : null);
+    $("next").href = href(current < 6 ? current + 1 : null);
+    $("next").textContent = current < 6 ? t("التالي") : t("العودة للرئيسية");
+    $("complete").hidden = current === 0;
+    if (focus) $("lesson-title").focus({ preventScroll: true });
+  } else {
+    clearOfflineStation();
+  }
+  refreshProgress();
+  document.dispatchEvent(new Event("zoo:route"));
+  if (focus) window.scrollTo(0, 0);
+}
+
+function save() {
+  try { localStorage.setItem(key, JSON.stringify([...completed])); } catch {}
+  refreshProgress();
+}
+
+$("complete").addEventListener("click", () => {
+  if (current > 0) { completed.add(current); save(); }
+});
+$("reset").addEventListener("click", () => {
+  if (confirm(t("هل تريد مسح تقدّمك والبدء من جديد؟"))) {
+    completed.clear();
+    save();
+    location.hash = "home";
+  }
+});
+$("font").addEventListener("click", event => {
+  const on = event.currentTarget.getAttribute("aria-pressed") !== "true";
+  event.currentTarget.setAttribute("aria-pressed", String(on));
+  document.documentElement.style.fontSize = on ? "19px" : "";
+});
+window.addEventListener("hashchange", () => {
+  if (location.hash !== "#main") render(true);
+});
+render(false);
+const dialogue = [
+  { speaker: "ليان", line: "Welcome to the zoo! What can you see?" },
+  { speaker: "دورك", line: "Look! I can see a tiger.", options: ["I can see a tiger.", "I can hear a tiger."], answer: 0 },
+  { speaker: "نور", line: "Yes! It is orange and black. Is the tiger fast or slow?" },
+  { speaker: "دورك", line: "The tiger is fast.", options: ["The tiger is slow.", "The tiger is fast."], answer: 1 },
+  { speaker: "ليان", line: "Well done! Now look at the elephant. Is it big or small?" },
+  { speaker: "دورك", line: "It is very big.", options: ["It is very big.", "It is very small."], answer: 0 },
+  { speaker: "نور", line: "Great job, explorer! Let’s find another animal." }
+];
+let dialogueIndex = 0;
+const dialogueAnswers = new Map();
+const player = $("dialogue-audio");
+const feedback = $("dialogue-feedback");
+const wordAudio = new Audio();
+const welcomeAudio = new Audio(offlineMediaUrl("media/audios/zaki-welcome.wav"));
+
+function renderDialogue() {
+  const step = dialogue[dialogueIndex];
+  const answer = dialogueAnswers.get(dialogueIndex);
+  player.pause();
+  player.src = offlineMediaUrl("media/audios/dialogue-" + dialogueIndex + ".wav");
+  const needsAnswer = step.options && answer !== step.answer;
+  player.hidden = Boolean(needsAnswer);
+  $("speaker").textContent = t(step.speaker);
+  $("speech").textContent = needsAnswer ? "Choose your reply." : step.line;
+  $("dialogue-count").textContent = number(dialogueIndex + 1) + " / " + number(dialogue.length);
+  $("dialogue-back").disabled = dialogueIndex === 0;
+  $("dialogue-next").disabled = Boolean(needsAnswer);
+  $("dialogue-next").textContent = dialogueIndex === dialogue.length - 1 ? t("إنهاء الحوار") : t("التالي");
+  feedback.textContent = answer === undefined ? "" : needsAnswer ? t("جرّب مرة ثانية.") : t("إجابة صحيحة! استمع إلى الجملة وكرّرها.");
+  $("reply-options").replaceChildren(...(step.options || []).map((label, i) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "secondary";
+    button.textContent = label;
+    button.dataset.selected = String(i === answer);
+    button.addEventListener("click", () => {
+      dialogueAnswers.set(dialogueIndex, i);
+      renderDialogue();
+      $("reply-options").children[i].focus();
+    });
+    return button;
+  }));
+}
+
+for (const button of document.querySelectorAll("[data-dialog]")) {
+  button.addEventListener("click", () => {
+    welcomeAudio.pause();
+    if (button.dataset.dialog === "dialogue") renderDialogue();
+    $(button.dataset.dialog).showModal();
+  });
+}
+$("dialogue").addEventListener("close", () => player.pause());
+$("words").addEventListener("close", () => wordAudio.pause());
+$("dialogue-back").addEventListener("click", () => {
+  if (dialogueIndex > 0) { dialogueIndex--; renderDialogue(); }
+});
+$("dialogue-next").addEventListener("click", () => {
+  if (dialogueIndex === dialogue.length - 1) {
+    $("dialogue").close();
+    dialogueIndex = 0;
+    dialogueAnswers.clear();
+  } else {
+    dialogueIndex++;
+    renderDialogue();
+  }
+});
+$("welcome").addEventListener("click", event => {
+  const button = event.currentTarget;
+  if (welcomeAudio.paused) {
+    welcomeAudio.play().catch(() => { button.textContent = t("🔊 أعد المحاولة"); });
+  } else welcomeAudio.pause();
+});
+for (const [animal, arabic] of [["elephant","فيل"],["fox","ثعلب"],["giraffe","زرافة"],["monkey","قرد"],["snake","أفعى"],["tiger","نمر"]]) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "card";
+  const picture = document.createElement("img");
+  picture.src = offlineMediaUrl("media/images/animal_" + animal + ".png");
+  picture.alt = "";
+  const name = document.createElement("strong");
+  name.lang = "en";
+  name.textContent = animal;
+  const translation = document.createElement("small");
+  translation.textContent = arabic + " 🔊";
+  translation.lang = "ar";
+  button.append(picture, name, translation);
+  button.addEventListener("click", () => {
+    wordAudio.src = offlineMediaUrl("media/audios/word-" + animal + ".wav");
+    wordAudio.play().then(() => { $("word-status").textContent = arabic; })
+      .catch(() => { $("word-status").textContent = t("تعذّر تشغيل التسجيل"); });
+  });
+  $("word-cards").append(button);
+}
+
+
+const editorKey = "great-zoo-site-editor-v1";
+const art = {
+  cover: ["غلاف زكي والأسماء", "zoo-cover-credits.png"],
+  gate: ["بوابة الحديقة", "zoo-magic-gate.png"],
+  dialogue: ["ليان ونور في الحديقة", "zoo-dialogue-new.png"],
+  animals: ["الحيوانات", "strip_elephant_monkey_fox.png"],
+  sizes: ["الأحجام", "size_scale.png"],
+  colors: ["الألوان", "colour_chart.png"],
+  reading: ["كلمات الحديقة", "match_grid.png"],
+  speed: ["سباق الحيوانات", "race_tiger_giraffe.png"],
+  finish: ["نهاية الرحلة", "scene_end.png"]
+};
+const notes = [
+  "", "اسمع أسماء الحيوانات وكرّرها، ثم جرّب التعرّف عليها من الصور.",
+  "قارن بين أحجام الحيوانات وعدّ أرجلها.", "طابِق الألوان وعدّ الحيوانات واستمع للأعداد.",
+  "اقرأ الكلمات وأكمل الحروف الناقصة.", "استمع وصفْ كيف تتحرّك الحيوانات.",
+  "صف الحيوانات، وحلّ التحدّي النهائي، ثم انتقل إلى صفحة الشهادة."
+];
+const englishNotes = [
+  "", "Listen to the animal names and repeat them. Then find the animals in the pictures.",
+  "Compare animal sizes and count their legs.", "Match colours, count animals, and listen to numbers.",
+  "Read the words and fill in the missing letters.", "Listen and describe how the animals move.",
+  "Describe the animals, finish the final challenge, and open the certificate page."
+];
+const defaultContent = {
+  title: "The Great Zoo Adventure",
+  introEn: "Explore the zoo with Zaki. Listen, play, and try the final challenge!",
+  intro: "استكشف حديقة الحيوانات مع زكي. استمع إلى الكلمات، العب، وجرّب التحدّي الأخير!",
+  author: "أمل محمد الاغا",
+  supervisor: "الدكتور مجدي عقل",
+  cover: "cover",
+  stations: lessons.map(([,arabic,english], i) => ({
+    arabic, english, note: notes[i], noteEn: englishNotes[i], image: ["gate","animals","sizes","colors","reading","speed","finish"][i]
+  }))
+};
+const limits = {title:95,intro:350,introEn:350,author:65,supervisor:75,arabic:70,english:90,note:350,noteEn:350};
+const fields = ["title","intro","introEn","author","supervisor","cover"];
+const stationFields = ["arabic","english","note","noteEn","image"];
+const fieldId = name => "edit-" + (name === "image" ? "picture" : name);
+const field = name => $(fieldId(name));
+
+function clean(input) {
+  if (!input || !Array.isArray(input.stations) || input.stations.length !== lessons.length) throw new Error("صيغة الملف غير صالحة.");
+  function normalize(item, keys, defaults) {
+    const result = {};
+    for (const k of keys) {
+      const value = item?.[k];
+      if (k === "cover" || k === "image") {
+        result[k] = typeof value === "string" && Object.hasOwn(art, value) ? value : defaults[k];
+      } else {
+        const safe = typeof value === "string" ? value.trim().slice(0, limits[k]) : "";
+        result[k] = (k === "note" || k === "noteEn") && typeof value === "string" ? safe : safe || defaults[k];
+      }
+    }
+    return result;
+  }
+  return {
+    ...normalize(input, fields, defaultContent),
+    stations: input.stations.map((station,i) => normalize(station, stationFields, defaultContent.stations[i]))
+  };
+}
+
+let config = structuredClone(defaultContent);
+try {
+  const savedConfig = localStorage.getItem(editorKey);
+  if (savedConfig) config = clean(JSON.parse(savedConfig));
+} catch {}
+let draft, selectedStation = 1;
+const selectStation = $("edit-station");
+
+function option(value, label) {
+  const item = document.createElement("option");
+  item.value = value;
+  item.textContent = label;
+  return item;
+}
+
+
+function syncLesson() {
+  if (current === null) return;
+  const station = config.stations[current];
+  $("lesson-label").textContent = current ? (language === "ar" ? "الحصة " + number(current) + " من ٦" : "Lesson " + current + " of 6") : t("مقدمة الرحلة");
+  $("next").textContent = current < 6 ? t("التالي") : t("العودة للرئيسية");
+  $("lesson-title").textContent = language === "ar" ? station.arabic : station.english;
+  $("lesson-description").textContent = station.english;
+  $("lesson-description").hidden = language === "en";
+  const note = language === "ar" ? station.note : station.noteEn;
+  $("lesson-note").textContent = note;
+  $("lesson-note").hidden = !note;
+  $("lesson-frame").title = station.english + " — interactive activities";
+}
+function applyConfig() {
+  document.title = language === "ar" ? config.title + " | مغامرة حديقة الحيوانات" : config.title;
+  $("cover-title").textContent = config.title;
+  $("cover-intro").textContent = language === "ar" ? config.intro : config.introEn;
+  $("author-credit").textContent = config.author;
+  $("supervisor-credit").textContent = config.supervisor;
+  const bakedNames = config.cover === "cover" && config.author === defaultContent.author && config.supervisor === defaultContent.supervisor;
+  $("main-cover").src = offlineMediaUrl("media/images/" + (config.cover === "cover" && !bakedNames ? "zoo-cover-new.png" : art[config.cover][1]));
+  $("main-cover").alt = bakedNames ? (language === "ar" ? "مغامرة حديقة الحيوانات. إعداد " + config.author + "، إشراف " + config.supervisor : "The Great Zoo Adventure. Created by Amal Mohammad Al-Agha. Supervised by Dr. Majdi Aql.") : t(art[config.cover][0]);
+  $("editable-credits").hidden = bakedNames;
+  $("stations").replaceChildren(...config.stations.map((station,i) => linkFor([lessons[i][0],language === "ar" ? station.arabic : station.english, language === "ar" ? station.english : ""],i,false)));
+  $("cards").replaceChildren(...config.stations.slice(1).map((station,i) => {
+    const card = linkFor([lessons[i+1][0],language === "ar" ? station.arabic : station.english, language === "ar" ? station.english : ""],i+1,true);
+    card.classList.add("lesson-card");
+    const picture = document.createElement("img");
+    picture.src = offlineMediaUrl("media/images/" + art[station.image][1]);
+    picture.loading = "lazy";
+    picture.alt = "";
+    const note = document.createElement("em");
+    note.textContent = language === "ar" ? station.note : station.noteEn;
+    note.hidden = !note.textContent;
+    card.querySelector("small").hidden = language === "en";
+    card.prepend(picture);
+    card.append(note);
+    return card;
+  }));
+  refreshProgress();
+  syncLesson();
+}
+function fillEditor() {
+  for (const name of fields) field(name).value = draft[name];
+  selectStation.replaceChildren(...draft.stations.map((station,i) => option(i,language === "ar" ? station.arabic : station.english)));
+  selectStation.value = selectedStation;
+  $("edit-picture").replaceChildren(...Object.entries(art).map(([value,[label]]) => option(value,t(label))));
+  for (const name of stationFields) field(name).value = draft.stations[selectedStation][name];
+}
+function recordDraft() {
+  for (const name of fields) draft[name] = field(name).value;
+  for (const name of stationFields) draft.stations[selectedStation][name] = field(name).value;
+}
+document.addEventListener("zoo:route", syncLesson);
+document.querySelector('[data-dialog="editor"]').addEventListener("click", () => {
+  selectedStation = current ?? 1;
+  draft = structuredClone(config);
+  fillEditor();
+  $("editor-status").textContent = "";
+});
+selectStation.addEventListener("change", () => {
+  const next = Number(selectStation.value);
+  recordDraft();
+  selectedStation = next;
+  fillEditor();
+});
+$("editor-form").addEventListener("submit", event => {
+  event.preventDefault();
+  recordDraft();
+  config = clean(draft);
+  applyConfig();
+  try {
+    localStorage.setItem(editorKey,JSON.stringify(config));
+    $("editor-status").textContent = t("تم حفظ تعديلاتك على هذا الجهاز.");
+  } catch {
+    $("editor-status").textContent = t("ظهرت تعديلاتك في هذه الجلسة. نزّلي الإعدادات لتحتفظي بها.");
+  }
+});
+$("export-settings").addEventListener("click", () => {
+  recordDraft();
+  const url = URL.createObjectURL(new Blob([JSON.stringify(clean(draft),null,2)],{type:"application/json"}));
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "zoo-settings.json";
+  link.click();
+  setTimeout(() => URL.revokeObjectURL(url),2000);
+});
+$("import-settings").addEventListener("change", async event => {
+  const input = event.currentTarget;
+  try {
+    const file = input.files[0];
+    if (!file || file.size > 50000) throw new Error("ملف الإعدادات غير صالح.");
+    draft = clean(JSON.parse(await file.text()));
+    fillEditor();
+    $("editor-status").textContent = t("تم تحميل الإعدادات. اضغطي حفظ التعديلات لتطبيقها.");
+  } catch {
+    $("editor-status").textContent = t("تعذّر قراءة الملف. اختاري ملف إعدادات من هذا الموقع.");
+  } finally {
+    input.value = "";
+  }
+});
+applyConfig();
+
+
+$("language").addEventListener("click", () => {
+  language = language === "ar" ? "en" : "ar";
+  try { localStorage.setItem("great-zoo-language",language); } catch {}
+  localizeStatic();
+  applyConfig();
+});
+localizeStatic();
+
+</script>
+</body></html>
+
