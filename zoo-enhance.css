@@ -1,0 +1,29 @@
+/* Zoo enhancements: narrator, celebrations, badges, videos, animated background */
+.zoo-bg{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.zoo-bg i{position:absolute;bottom:-60px;font-style:normal;opacity:.35;animation:zoo-rise linear infinite}
+@keyframes zoo-rise{0%{transform:translateY(0) rotate(0)}100%{transform:translateY(-115vh) rotate(25deg)}}
+.zoo-guide{position:fixed;inset-inline-start:16px;bottom:16px;z-index:50;display:flex;align-items:flex-end;gap:10px;max-width:min(420px,calc(100vw - 32px));direction:ltr}
+.zoo-guide[hidden]{display:none!important}
+.zoo-avatar{flex:none;width:68px;height:68px;border-radius:50%;background:#f0c66f;border:4px solid #fff8e6;box-shadow:0 4px 14px #0003;display:grid;place-items:center;font-size:2.1rem;transition:transform .2s}
+.zoo-guide[data-speaking="true"] .zoo-avatar{animation:zoo-bounce .55s ease-in-out infinite alternate}
+@keyframes zoo-bounce{from{transform:translateY(0) scale(1)}to{transform:translateY(-8px) scale(1.08)}}
+.zoo-bubble{background:#fffdf5;border:2px solid #e9b752;border-radius:18px;padding:10px 12px;box-shadow:0 4px 14px #0002;font-size:.9rem;line-height:1.5;min-width:180px}
+.zoo-caption{margin:0 0 8px}
+.zoo-caption b{display:block;color:#184e3d}
+.zoo-caption span{display:block;color:#5c4a22;direction:rtl;font-size:.82rem}
+.zoo-ctrl{display:flex;gap:6px}
+.zoo-ctrl button{border:1px solid #c9b57a;background:#fff;border-radius:10px;padding:6px 10px;font-size:1.05rem;line-height:1}
+.zoo-ctrl button[aria-pressed="true"]{background:#184e3d;color:#fff}
+.zoo-badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.zoo-badges span{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#ece9d6;filter:grayscale(1);opacity:.5;font-size:1.1rem;transition:.3s}
+.zoo-badges span[data-on="true"]{background:#f0c66f;filter:none;opacity:1;box-shadow:0 0 0 2px #fff8e6,0 0 0 4px #e9b752}
+.zoo-badges span.pop{animation:zoo-pop .7s}
+@keyframes zoo-pop{0%{transform:scale(.3) rotate(-30deg)}60%{transform:scale(1.4) rotate(10deg)}100%{transform:scale(1)}}
+.zoo-video{margin:18px 0;background:#164b3a;color:#fff7dd;border-radius:18px;padding:14px}
+.zoo-video h3{margin:0 0 8px;font-size:1rem}
+.zoo-video video{width:100%;max-height:420px;border-radius:12px;background:#000}
+#zoo-confetti{position:fixed;inset:0;z-index:60;pointer-events:none}
+.zoo-toast{position:fixed;top:18px;inset-inline:0;margin:auto;width:max-content;max-width:90vw;z-index:61;background:#184e3d;color:#fff8e6;padding:12px 20px;border-radius:99px;font-weight:700;box-shadow:0 6px 20px #0004;animation:zoo-toast 2.6s forwards}
+@keyframes zoo-toast{0%{transform:translateY(-70px)}12%,80%{transform:translateY(0)}100%{transform:translateY(-90px);opacity:0}}
+@media (prefers-reduced-motion:reduce){.zoo-bg{display:none}.zoo-guide[data-speaking="true"] .zoo-avatar,.zoo-badges span.pop,.zoo-toast{animation:none}}
+@media (max-width:640px){.zoo-avatar{width:54px;height:54px;font-size:1.7rem}}
