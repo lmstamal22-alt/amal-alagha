@@ -426,6 +426,7 @@ function refreshProgress() {
 function render(focus) {
   const match = location.hash.match(/^#lesson-([0-6])$/);
   current = match ? Number(match[1]) : null;
+  if (match) lastLessonHash = location.hash;
   $("home").hidden = current !== null;
   $("activity").hidden = current === null;
   if (current !== null) {
@@ -468,7 +469,10 @@ $("font").addEventListener("click", event => {
   event.currentTarget.setAttribute("aria-pressed", String(on));
   document.documentElement.style.fontSize = on ? "19px" : "";
 });
+let lastLessonHash = "";
 window.addEventListener("hashchange", () => {
+  /* The lesson book changes the page hash when the student turns a page; stay on the lesson. */
+  if (/^#h5p/.test(location.hash) && lastLessonHash) { setTimeout(() => { if (/^#h5p/.test(location.hash)) history.replaceState(null, "", lastLessonHash); }, 450); return; }
   if (location.hash !== "#main") render(true);
 });
 render(false);
